@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+const fs = require('fs')
+fs.readFileSync('README.md', 'utf8').replace(/```js\s+\/\/\s*(\S+)([\s\S]+?)```/g, (a, b, c) => {
+  fs.writeFileSync('src/' + b, c, 'utf8')
+})
