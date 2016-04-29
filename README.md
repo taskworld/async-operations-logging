@@ -1,6 +1,6 @@
 # Logging of asynchronous operations in JavaScript.
 
-Ok, let’s assume that we are building an application computes loads the data from the database (asynchronously) and generates a report like this:
+Ok, let’s assume that we are building an application loads some data from the database (asynchronously) and generates a report like this:
 
 ```js
 // version0.js
