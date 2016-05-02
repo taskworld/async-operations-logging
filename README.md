@@ -30,8 +30,10 @@ async function combineData (a, b) {
   return a + b
 }
 
-// Main code. For instance, this may be an API endpoint or whatev’r.
-// Here we’re simply implementing it using a console program.
+// Main code that receives request, delegates work to service functions,
+// and output the result back to the requester. For instance, this may be
+// an API endpoint or whatev’r, but here we’re simply implementing it
+// as a console program.
 function main () {
   Promise.resolve(processRequest())
   .then(answer => console.log('Answer is %d!', answer))
@@ -54,7 +56,11 @@ So we decided that we need to perform logging — at the start and the end of ea
 Since this service will be used by thousand of clients simultaneously, we need some kind of “transaction ID” (generated per request) to distinguish different requests from each other.
 
 
-## Attempt 1: Pass transaction ID to each function and do logging...
+## Attempt 1: Pass transaction ID to each async operation.
+
+This is the most straightforward solution.
+The request handler generates a new transaction ID and passes it to the service,
+which passes it on to every function that requires logging.
 
 ```js
 // version1.js
